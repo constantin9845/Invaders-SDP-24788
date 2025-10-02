@@ -1,0 +1,50 @@
+[INFO|3:13:26]: Started loading resources. 
+[FINE|3:13:26]: Sprite Ship loaded. 
+[FINE|3:13:26]: Sprite ShipDestroyed loaded. 
+[FINE|3:13:26]: Sprite Bullet loaded. 
+[FINE|3:13:26]: Sprite EnemyBullet loaded. 
+[FINE|3:13:26]: Sprite EnemyShipA1 loaded. 
+[FINE|3:13:26]: Sprite EnemyShipA2 loaded. 
+[FINE|3:13:26]: Sprite EnemyShipB1 loaded. 
+[FINE|3:13:26]: Sprite EnemyShipB2 loaded. 
+[FINE|3:13:26]: Sprite EnemyShipC1 loaded. 
+[FINE|3:13:26]: Sprite EnemyShipC2 loaded. 
+[FINE|3:13:26]: Sprite EnemyShipSpecial loaded. 
+[FINE|3:13:26]: Sprite Explosion loaded. 
+[INFO|3:13:26]: Finished loading the sprites. 
+[INFO|3:13:26]: Finished loading the fonts. 
+[INFO|3:13:26]: Starting 448x520 title screen at 60 fps. 
+[INFO|3:13:31]: Closing title screen. 
+[INFO|3:13:31]: Starting 448x520 game screen at 60 fps. 
+[INFO|3:13:31]: Initializing 5x4 ship formation in (20,100) 
+[INFO|3:13:39]: Destroyed ship in (4,3) 
+[INFO|3:13:39]: Removed enemy 3 from column 4 
+[INFO|3:13:40]: Destroyed ship in (3,0) 
+[INFO|3:13:41]: Destroyed ship in (3,3) 
+[INFO|3:13:41]: Removed enemy 0 from column 3 
+[INFO|3:13:41]: Removed enemy 3 from column 3 
+[INFO|3:13:42]: Destroyed ship in (3,1) 
+[INFO|3:13:42]: Removed enemy 1 from column 3 
+[INFO|3:13:43]: Destroyed ship in (3,0) 
+[INFO|3:13:43]: Shooters list reduced to 4 members. 
+[INFO|3:13:43]: Removed enemy 0 from column 3 
+[INFO|3:13:43]: Removed column 3 
+[INFO|3:13:45]: Destroyed ship in (2,0) 
+[INFO|3:13:45]: Destroyed ship in (2,3) 
+[INFO|3:13:45]: Removed enemy 0 from column 2 
+[INFO|3:13:45]: Removed enemy 3 from column 2 
+[INFO|3:13:45]: Hit on player ship, 2 lives remaining. 
+[INFO|3:13:47]: Destroyed ship in (1,3) 
+[INFO|3:13:48]: Removed enemy 3 from column 1 
+[INFO|3:13:49]: Destroyed ship in (0,3) 
+[INFO|3:13:49]: Removed enemy 3 from column 0 
+[INFO|3:13:49]: Hit on player ship, 1 lives remaining. 
+[INFO|3:13:51]: Hit on player ship, 0 lives remaining. 
+[INFO|3:13:53]: Screen cleared with a score of 50 
+[INFO|3:13:53]: Closing game screen. 
+[INFO|3:13:53]: Starting 448x520 score screen at 60 fps, with a score of 50, 0 lives remaining, 11 bullets shot and 9 ships destroyed. 
+[INFO|3:13:53]: Loading default high scores. 
+[INFO|3:13:58]: Saving user high scores. 
+[INFO|3:13:58]: Closing score screen. 
+[INFO|3:13:58]: Starting 448x520 game screen at 60 fps. 
+[INFO|3:13:58]: Initializing 5x4 ship formation in (20,100) 
