@@ -15,6 +15,8 @@ import entity.Entity;
 import entity.Ship;
 import entity.Bullet;
 
+import javax.imageio.ImageIO;
+
 /**
  * Manages screen drawing.
  *
@@ -37,6 +39,8 @@ public final class DrawManager {
 	private static Graphics backBufferGraphics;
 	/** Buffer image. */
 	private static BufferedImage backBuffer;
+    /** Optional background image (drawn instead of solid black). */
+    private static BufferedImage backgroundImage;
 	/** Normal sized font. */
 	private static Font fontRegular;
 	/** Normal sized font properties. */
@@ -123,6 +127,18 @@ public final class DrawManager {
 		}
 	}
 
+    /**
+     * Loads a background image from the classpath. Example: "/background.png".
+     * Pass null to clear the background image and use solid fill instead.
+     */
+    public void loadBackgroundImage(final String resourcePath) throws IOException {
+        if (resourcePath == null) {
+            backgroundImage = null;
+            return;
+        }
+        backgroundImage = ImageIO.read(DrawManager.class.getResource(resourcePath));
+    }
+
 	/**
 	 * Returns shared instance of DrawManager.
 	 *
@@ -158,9 +174,18 @@ public final class DrawManager {
 		graphics = frame.getGraphics();
 		backBufferGraphics = backBuffer.getGraphics();
 
-		backBufferGraphics.setColor(Color.BLACK);
-		backBufferGraphics
-				.fillRect(0, 0, screen.getWidth(), screen.getHeight());
+        if (backgroundImage != null) {
+            backBufferGraphics.drawImage(
+                    backgroundImage,
+                    0, 0,
+                    screen.getWidth(),
+                    screen.getHeight(),
+                    null
+            );
+        } else {
+            backBufferGraphics.setColor(Color.BLACK);
+            backBufferGraphics.fillRect(0, 0, screen.getWidth(), screen.getHeight());
+        }
 
 		fontRegularMetrics = backBufferGraphics.getFontMetrics(fontRegular);
 		fontBigMetrics = backBufferGraphics.getFontMetrics(fontBig);
