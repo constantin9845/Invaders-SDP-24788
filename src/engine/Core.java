@@ -1,5 +1,6 @@
 package engine;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.ConsoleHandler;
@@ -69,6 +70,13 @@ public final class Core {
 
 		frame = new Frame(WIDTH, HEIGHT);
 		DrawManager.getInstance().setFrame(frame);
+
+        try {
+            DrawManager.getInstance().loadBackgroundImage("/wangyongyi/background.png");
+        } catch (IOException e) {
+            Core.getLogger().warning("Failed to load background image: " + e.getMessage());
+        }
+
 		int width = frame.getWidth();
 		int height = frame.getHeight();
 
