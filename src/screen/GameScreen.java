@@ -1,6 +1,7 @@
 // screen/GameScreen.java
 package screen;
 
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.HashSet;
 import java.util.Set;
@@ -15,6 +16,11 @@ import entity.EnemyShip;
 import entity.EnemyShipFormation;
 import entity.Entity;
 import entity.Ship;
+
+import Animations.Explosion;
+import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  * Implements the game screen, where the action happens.(supports co-op with
@@ -44,10 +50,11 @@ public class GameScreen extends Screen {
 	private long gameStartTime;
 	private boolean levelFinished;
 	private boolean bonusLife;
+    private List<Explosion> explosions = new ArrayList<>();
 
-	/**
+    /**
 	 * Constructor, establishes the properties of the screen.
-	 * 
+	 *
 	 * @param gameState
 	 *                     Current game state.
 	 * @param gameSettings
@@ -192,7 +199,15 @@ public class GameScreen extends Screen {
 
 			this.enemyShipFormation.update();
 			this.enemyShipFormation.shoot(this.bullets);
-		}
+
+            // Update explosions
+            for (Explosion explosion : new ArrayList<>(explosions)) {
+                explosion.update();
+                if (explosion.isFinished()) {
+                    explosions.remove(explosion);
+                }
+            }
+        }
 
 		manageCollisions();
 		cleanBullets();
@@ -258,7 +273,13 @@ public class GameScreen extends Screen {
 			drawManager.drawHorizontalLine(this, this.height / 2 + this.height / 12);
 		}
 
-		drawManager.completeDrawing(this);
+        // Draw explosions
+        Graphics2D g = drawManager.getGraphics();
+        for (Explosion explosion : explosions) {
+            explosion.draw(g);
+        }
+
+        drawManager.completeDrawing(this);
 	}
 
 	private void cleanBullets() {
@@ -287,9 +308,13 @@ public class GameScreen extends Screen {
 					if (ship != null && !ship.isDestroyed()
 							&& checkCollision(bullet, ship) && !this.levelFinished) {
 						recyclable.add(bullet);
-
 						ship.destroy(); // explosion/respawn handled by Ship.update()
                         state.decLife(p); // decrement shared/team lives by 1
+
+                        // Trigger explosion when last life is lost
+                        if (state.getLivesRemaining() == 0) {
+                            explosions.add(new Explosion(ship.getPositionX(), ship.getPositionY()));
+                        }
 
 						this.logger.info("Hit on player " + (p + 1) + ", team lives now: " + state.getLivesRemaining());
 						break;

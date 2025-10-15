@@ -31,6 +31,15 @@ public class Ship extends Entity {
 	// unknown, 1 = P1, 2 = P2
 	private int playerId = 0; // 0 = unknown, 1 = P1, 2 = P2
 
+    /** Explosion effect when ship completely destroyed */
+    private boolean exploding = false;
+    private int explosionFrame = 0;
+
+    public void startExplosion() {
+        this.exploding = true;
+        this.explosionFrame = 0;
+    }
+
 	/**
 	 * Constructor, establishes the ship's properties.
 	 *
@@ -95,10 +104,15 @@ public class Ship extends Entity {
 	 * Updates status of the ship.
 	 */
 	public final void update() {
-		if (!this.destructionCooldown.checkFinished())
-			this.spriteType = SpriteType.ShipDestroyed;
-		else
-			this.spriteType = SpriteType.Ship;
+		if (!this.destructionCooldown.checkFinished()) {
+            this.explosionFrame++;
+            if ((this.explosionFrame / 4) % 2 == 0) {
+                this.spriteType = SpriteType.ShipDestroyed;
+            } else {
+                this.spriteType = SpriteType.Ship;
+            }
+            return;
+        }
 	}
 
 	/**

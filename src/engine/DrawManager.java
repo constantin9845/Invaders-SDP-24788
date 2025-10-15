@@ -723,4 +723,8 @@ public final class DrawManager {
 			drawCenteredBigString(screen, "GO!", screen.getHeight() / 2
 					+ fontBigMetrics.getHeight() / 3);
 	}
+
+    public Graphics2D getGraphics() {
+        return (Graphics2D) graphics;
+    }
 }
